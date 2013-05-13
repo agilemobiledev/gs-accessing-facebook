@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework</groupId>
-	<artifactId>gs-accessing-facebook-complete</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>gs-accessing-facebook</artifactId>
+	<version>1.0</version>
 
 	<parent>
 		<groupId>org.springframework.bootstrap</groupId>
@@ -17,10 +17,6 @@
 		<dependency>
 			<groupId>org.springframework.bootstrap</groupId>
 			<artifactId>spring-bootstrap-web-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.social</groupId>

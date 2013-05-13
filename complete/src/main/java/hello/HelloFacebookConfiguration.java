@@ -1,7 +1,5 @@
 package hello;
 
-import javax.inject.Inject;
-
 import org.springframework.bootstrap.SpringApplication;
 import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -27,23 +25,6 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @EnableInMemoryConnectionRepository
 @ComponentScan
 public class HelloFacebookConfiguration {
-
-	@Inject
-	private ConnectionFactoryLocator cfl;
-	
-	/*
-	 * SPRING SOCIAL CONFIG
-	 */
-	
-//	@Bean
-//	public InMemoryUsersConnectionRepository usersConnectionRepository() {
-//		return new InMemoryUsersConnectionRepository(cfl);
-//	}
-//
-//	@Bean
-//	public ConnectionRepository connectionRepository() {
-//		return usersConnectionRepository().createConnectionRepository(userIdSource().getUserId());
-//	}
 
 	@Bean
 	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
