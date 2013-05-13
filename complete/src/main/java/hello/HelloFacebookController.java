@@ -23,14 +23,14 @@ public class HelloFacebookController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String helloFacebook(Model model) {
-		if (facebook.isAuthorized()) {
-			model.addAttribute(facebook.userOperations().getUserProfile());
-			PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
-			model.addAttribute("friends", friends);
-			return "hello";
-		} else {
+		if (!facebook.isAuthorized()) {
 			return "redirect:/connect/facebook";
 		}
+			
+		model.addAttribute(facebook.userOperations().getUserProfile());
+		PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
+		model.addAttribute("friends", friends);
+		return "hello";
 	}
 	
 }
