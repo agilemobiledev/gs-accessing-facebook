@@ -14,7 +14,7 @@ This guide will take you through creating a simple web application that accesses
 2. A favorite text editor or IDE
 3. JDK 7 or better
 4. Your choice of Maven (3.0+) or Gradle (1.5+)
-5. An application ID and secret obtained from [registring an application with Facebook](../gs-register-facebook-app).
+5. An application ID and secret obtained from [registring an application with Facebook](../gs-register-facebook-app/README.md).
 
 ### How to Complete this Guide
 Like all Spring's [Getting Started guides](/getting-started), you can choose to start from scratch and complete each step, or you can jump past basic setup steps that may already be familiar to you. Either way, you'll end up with working code.
@@ -172,7 +172,7 @@ public class HelloFacebookConfiguration {
 
 This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers—you'll build one of those in an upcoming step. And we've also annotated the configuration class with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html) which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
 
-Also, this example will use [Thymeleaf](../understanding-thymeleaf) as a view implementation to present information to the user. Therefore, the configuration class needs a few essential Thymeleaf beans to enable Thymeleaf templates as Spring views.
+Also, this example will use [Thymeleaf](../understanding-thymeleaf/README.md) as a view implementation to present information to the user. Therefore, the configuration class needs a few essential Thymeleaf beans to enable Thymeleaf templates as Spring views.
 
 <a name="initial"></a>
 Enabling Facebook
@@ -229,7 +229,7 @@ public class HelloFacebookConfiguration {
 }
 ```
 
-Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, you'll need to [obtain a real application ID and secret](../gs-register-facebook-app) and substitute the fake values for the real values given to you by Facebook.
+Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, you'll need to [obtain a real application ID and secret](../gs-register-facebook-app/README.md) and substitute the fake values for the real values given to you by Facebook.
 
 
 Enabling a Connection Repository
@@ -368,7 +368,7 @@ In a real application, you'll probably want to create an implementation of `User
 Declaring a Connection Controller
 ---------------------------------
 
-Obtaining user authorization from Facebook involves a "dance" of redirects between the application and Facebook. This "dance" is formally known as [OAuth 2](../understanding-oauth)'s _Authorization Code Grant_.
+Obtaining user authorization from Facebook involves a "dance" of redirects between the application and Facebook. This "dance" is formally known as [OAuth 2](../understanding-oauth/README.md)'s _Authorization Code Grant_.
 
 Don't worry if you don't know much about OAuth. Spring Social's [`ConnectController`](http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/connect/web/ConnectController.html) will take care of the OAuth dance for you. Just declare `ConnectController` as a bean like this:
 
@@ -707,7 +707,7 @@ Related Resources
 -----------------
 There's a lot more to working with social APIs than simply fetching a user's name and friends. You can continue your exploration of Facebook, Twitter, and other APIs with the following Getting Started guides:
 
-* [Accessing Twitter Data](../gs-accessing-twitter)
+* [Accessing Twitter Data](../gs-accessing-twitter/README.md)
 * Authenticating with Twitter
 * Authenticating with Facebook
 
