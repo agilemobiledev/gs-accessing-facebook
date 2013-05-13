@@ -560,6 +560,92 @@ Speaking of the "hello" view, here it is as a Thymeleaf template:
 </html>
 ```
 
+Creating an executable main class
+---------------------------------
+
+We can launch the application from a custom main class, or we can do that directly from one of the configuration classes.  The easiest way is to use the `SpringApplication` helper class:
+
+`src/main/java/hello/HelloWorldConfiguration.java`
+
+```java
+package hello;
+
+import org.springframework.bootstrap.SpringApplication;
+import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.thymeleaf.spring3.SpringTemplateEngine;
+import org.thymeleaf.spring3.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
+import org.springframework.web.servlet.ViewResolver;
+
+import org.springframework.social.facebook.config.annotation.EnableFacebook;
+import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
+import org.springframework.social.UserIdSource;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.web.ConnectController;
+
+@Configuration
+@EnableAutoConfiguration
+@EnableWebMvc
+@EnableFacebook(appId="1234567890", appSecret="shhhhh!!!")
+@EnableInMemoryConnectionRepository
+@ComponentScan
+public class HelloFacebookConfiguration {
+
+    public static void main(String[] args) {
+        SpringApplication.run(HelloWorldConfiguration.class, args);
+    }
+
+	@Bean
+	public UserIdSource userIdSource() {
+		return new UserIdSource() {			
+			@Override
+			public String getUserId() {
+				return "testuser";
+			}
+		};
+	}
+
+	@Bean
+	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
+		return new ConnectController(connectionFactoryLocator, connectionRepository);
+	}
+
+	// THYMELEAF CONFIG
+	@Bean
+	public TemplateResolver templateResolver() {
+		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
+		resolver.setPrefix("/");
+		resolver.setSuffix(".html");
+		resolver.setTemplateMode("HTML5");
+		return resolver;
+	}
+	
+	@Bean
+	public SpringTemplateEngine templateEngine() {
+		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+		templateEngine.setTemplateResolver(templateResolver());
+		return templateEngine;
+	}
+	
+	@Bean
+	public ViewResolver viewResolver() {
+		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+		resolver.setTemplateEngine(templateEngine());
+		return resolver;
+	}
+
+}
+```
+
+The `@EnableAutoConfiguration` annotation has also been added: it provides a load of defaults (like the embedded servlet container) depending on the contents of your classpath, and other things.
+
+
 Building an executable JAR
 --------------------------
 
