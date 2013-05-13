@@ -24,11 +24,11 @@ To **start from scratch**, just move on to the next section and start [setting u
 If you'd like to **skip the basics**, then do the following:
 
  - [download][zip] and unzip the source repository for this guide—or clone it using [git](/understanding/git):
-`git clone https://github.com/springframework-meta/gs-rest-service.git`
- - cd into `gs-rest-service/initial`
- - jump ahead to [creating a representation class](#initial).
+`git clone https://github.com/springframework-meta/gs-accessing-facebook.git`
+ - cd into `gs-accessing-facebook/initial`
+ - jump ahead to [enabling Facebook](#initial).
 
-And **when you're finished**, you can check your results against the the code in `gs-rest-service/complete`.
+And **when you're finished**, you can check your results against the the code in `gs-accessing-facebook/complete`.
 
 <a name="scratch"></a>
 Setting up the project
@@ -289,10 +289,8 @@ public class HelloFacebookConfiguration {
 }
 ```
 
-> NOTE:
->
-> Although an in-memory connection repository is sufficient for testing and small sample applications, you'll want to select a more persistent
-> option for real applications. You can use [`@EnableJdbcConnectionRepository`](http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/config/annotation/EnableJdbcConnectionRepository.html) to persist connections to a relational database.
+Although an in-memory connection repository is sufficient for testing and small sample applications, you'll want to select a more persistent
+option for real applications. You can use [`@EnableJdbcConnectionRepository`](http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/config/annotation/EnableJdbcConnectionRepository.html) to persist connections to a relational database.
 
 
 Declaring a User ID Source
@@ -618,4 +616,12 @@ If you click on the link on the connection status page, you will be taken to the
 
 
 Congratulations! You have just developed a simple web application that uses Spring Social to connect a user with Facebook and to retrieve some data from the user's Facebook profile.
+
+Related Resources
+-----------------
+There's a lot more to working with social APIs than simply fetching a user's name and friends. You can continue your exploration of Facebook, Twitter, and other APIs with the following Getting Started guides:
+
+* [Accessing Twitter Data](../gs-accessing-twitter)
+* Authenticating with Twitter
+* Authenticating with Facebook
 
