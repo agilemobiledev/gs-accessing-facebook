@@ -143,36 +143,10 @@ import org.springframework.web.servlet.ViewResolver;
 @EnableWebMvc
 @ComponentScan
 public class HelloFacebookConfiguration {
-
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
-
 }
 ```
 
 This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers—you'll build one of those in an upcoming step. And we've also annotated the configuration class with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html) which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
-
-Also, this example will use [Thymeleaf](../understanding-thymeleaf/README.md) as a view implementation to present information to the user. Therefore, the configuration class needs a few essential Thymeleaf beans to enable Thymeleaf templates as Spring views.
 
 <a name="initial"></a>
 Enabling Facebook

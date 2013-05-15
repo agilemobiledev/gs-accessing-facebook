@@ -8,7 +8,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework</groupId>
-  <artifactId>gs-accessing-facebook</artifactId>
+  <artifactId>gs-accessing-facebook-complete</artifactId>
   <version>1.0</version>
   <build>
     <plugins>
