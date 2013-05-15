@@ -133,11 +133,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 @Configuration
 @EnableWebMvc
@@ -162,11 +157,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 
@@ -176,30 +166,6 @@ import org.springframework.social.facebook.config.annotation.EnableFacebook;
 @EnableFacebook(appId="1234567890", appSecret="shhhhh!!!")
 @ComponentScan
 public class HelloFacebookConfiguration {
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
 }
 ```
 
@@ -221,11 +187,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -236,30 +197,6 @@ import org.springframework.social.config.annotation.EnableInMemoryConnectionRepo
 @EnableInMemoryConnectionRepository
 @ComponentScan
 public class HelloFacebookConfiguration {
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
 }
 ```
 
@@ -280,11 +217,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -304,30 +236,6 @@ public class HelloFacebookConfiguration {
 				return "testuser";
 			}
 		};
-	}
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
 	}
 
 }
@@ -354,11 +262,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -388,30 +291,6 @@ public class HelloFacebookConfiguration {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
 	}
 
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
-
 }
 ```
 
@@ -423,7 +302,7 @@ Although much of what `ConnectController` does involves redirecting to Facebook 
 
 `ConnectController` does not define its own connection views, so we'll need to create them ourselves. First, here's a Thymeleaf view to be shown when no connection to Facebook exists:
 
-`src/main/webapp/connect/facebookConnect.html`
+`src/main/resources/templates/connect/facebookConnect.html`
 ```html
 <html>
 	<head>
@@ -446,7 +325,7 @@ The form on this view will POST to /connect/Facebook, which will kick off the OA
 
 Here's the view to be displayed when a connection exists:
 
-`src/main/webapp/connect/facebookConnected.html`
+`src/main/resources/templates/connect/facebookConnected.html`
 ```html
 <html>
 	<head>
@@ -516,7 +395,7 @@ Displaying User Data
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
-`src/main/webapp/hello.html`
+`src/main/resources/templates/hello.html`
 ```html
 <html>
 	<head>
@@ -550,11 +429,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.facebook.config.annotation.EnableFacebook;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -588,30 +462,6 @@ public class HelloFacebookConfiguration {
 	@Bean
 	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
-	}
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
 	}
 
 }

@@ -30,6 +30,7 @@ public class HelloFacebookController {
 		model.addAttribute(facebook.userOperations().getUserProfile());
 		PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
 		model.addAttribute("friends", friends);
+		
 		return "hello";
 	}
 	
