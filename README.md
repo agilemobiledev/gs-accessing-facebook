@@ -48,7 +48,7 @@ Create a Maven POM that looks like this:
 
 	<groupId>org.springframework</groupId>
 	<artifactId>gs-accessing-facebook</artifactId>
-	<version>1.0</version>
+	<version>0.1.0</version>
 
 	<parent>
 		<groupId>org.springframework.bootstrap</groupId>
