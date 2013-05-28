@@ -494,7 +494,7 @@ Running the Service
 
 Now you can run it from the jar as well, and distribute that as an executable artifact:
 ```
-$ java -jar target/gs-accessing-facebook-1.0.jar
+$ java -jar target/gs-accessing-facebook-0.1.0.jar
 
 ... app starts up ...
 ```
