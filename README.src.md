@@ -102,7 +102,6 @@ The [`@EnableAutoConfiguration`][] annotation switches on reasonable default beh
 
 ### {!include#build-an-executable-jar}
 
-
 Running the Service
 -------------------------------------
 
@@ -116,12 +115,12 @@ $ java -jar target/gs-accessing-facebook-0.1.0.jar
 Once the application starts up, you can point your web browser to http://localhost:8080. Since no connection has been established yet, you should see this screen prompting you to connect with Facebook:
 
 ![No connection to Facebook exists yet.](images/connect.png)
- 
+
 When you click the "Connect to Facebook" button, the browser will be redircted to Facebook for authorization:
 
 ![Facebook needs your permission to allow the application to access your data.](images/fbauth.png)
 
-At this point, Facebook is asking if you'd like to allow the sample application to read data from your profile and see a list of your friends. Click "Authorize app" to grant permission.
+At this point, Facebook is asking if you'd like to allow the sample application to access your public profile and list of friends. Click "Okay" to grant permission.
 
 Once permission has been granted, Facebook will redirect the browser back to the application and a connection will be created and stored in the connection repository. You should see this page indicating that a connection was successful:
 
@@ -156,4 +155,3 @@ Congrats! You've just developed a simple web application that obtains user autho
 [ConnectionRepository]: http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/connect/ConnectionRepository.html
 [Authentication]: http://static.springsource.org/spring-security/site/docs/3.2.x/apidocs/org/springframework/security/core/Authentication.html
 [SecurityContext]: http://static.springsource.org/spring-security/site/docs/3.2.x/apidocs/org/springframework/security/core/context/SecurityContext.html
-
