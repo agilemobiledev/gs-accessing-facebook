@@ -34,7 +34,7 @@ Before you can fetch a user's data from Facebook, there are a few things that yo
 
     {!include:complete/src/main/java/hello/FacebookConfig.java}
 
-Since the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]). Notice that, as shown here, the `appId` and `appSecret` attributes have been given fake values. For the code to work, you'll need to [obtain a real application ID and secret][register-facebook-app] and substitute these fake values for the real values given to you by Facebook.
+Since the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]. Notice that, as shown here, the `appId` and `appSecret` attributes have been given fake values. For the code to work, you'll need to [obtain a real application ID and secret][register-facebook-app] and substitute these fake values for the real values given to you by Facebook.
 
 Notice that `FacebookConfig` is also annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. After a user authorizes your application to access their Facebook data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
 
@@ -49,7 +49,7 @@ Notice that `ConnectController` is created by injecting a [`ConnectionFactoryLoc
 
 Connections represent a 3-way agreement between a user, an application, and an API provider such as Facebook. Although Facebook and the application itself are readily identifiable, you'll need a way to identify the current user. That's what the `UserIdSource` bean is for. 
 
-Here, the `userIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. Thus there is only one user of our sample application. In a real application, you'll probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user (perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext].)
+Here, the `userIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. Thus there is only one user of our sample application. In a real application, you'll probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user (perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext]).
 
 ### Create Connection Status Views
 
