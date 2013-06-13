@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/")
-public class HelloFacebookController {
+public class HelloController {
 	
 	private Facebook facebook;
 
 	@Inject
-	public HelloFacebookController(Facebook facebook) {
+	public HelloController(Facebook facebook) {
 		this.facebook = facebook;		
 	}
 	
