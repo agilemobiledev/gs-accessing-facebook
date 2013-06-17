@@ -1,15 +1,15 @@
-# Getting Started Accessing Facebook Data
+# Getting Started: Accessing Facebook Data
 
 What you'll build
 -----------------
 
-This guide will take you through creating a simple web application that accesses user data from Facebook, including the user's full name and a list of other Facebook users who they are friends with.
+This guide walks you through creating a simple web application that accesses user data from Facebook, including the user's full name and a list of their Facebook friends.
 
 What you'll need
 ----------------
 
-1. About 15 minutes
-1. An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
+- About 15 minutes
+- An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
  - A favorite text editor or IDE
  - [JDK 6][jdk] or later
  - [Maven 3.0][mvn] or later
@@ -117,7 +117,7 @@ Note to experienced Maven users who are unaccustomed to using an external parent
 <a name="initial"></a>
 Enable Facebook
 ----------------
-Before you can fetch a user's data from Facebook, there are a few things that you'll need to set up in the Spring configuration. Here's a configuration class that contains everything you'll need to enable Facebook in your application:
+Before you can fetch a user's data from Facebook, you need to set up the Spring configuration. Here's a configuration class that contains what you need to enable Facebook in your application:
 
 `src/main/java/hello/FacebookConfig.java`
 ```java
@@ -153,28 +153,29 @@ public class FacebookConfig {
 } 
 ```
 
-Since the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]. Notice that, as shown here, the `appId` and `appSecret` attributes have been given fake values. For the code to work, you'll need to [obtain a real application ID and secret][register-facebook-app] and substitute these fake values for the real values given to you by Facebook.
+Because the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]. Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, [obtain a real application ID and secret][register-facebook-app] and replace these fake values with the real values given to you by Facebook.
 
-Notice that `FacebookConfig` is also annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. After a user authorizes your application to access their Facebook data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
+After a user authorizes your application to access their Facebook data, Spring Social creates a connection. That connection will need to be saved in a connection repository for long-term use.
+For the purposes of testing and for small sample applications, such as the one in this guide, an in-memory connection repository is sufficient. Notice that `FacebookConfig` is annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. 
 
-For the purposes of this guide's sample application, an in-memory connection repository is sufficient. Although an in-memory connection repository is fine for testing and small sample applications, you'll want to select a more persistent
-option for real applications. You can use [`@EnableJdbcConnectionRepository`][@EnableJdbcConnectionRepository] to persist connections to a relational database.
+For real applications, you need to select a more persistent
+option. You can use [`@EnableJdbcConnectionRepository`][@EnableJdbcConnectionRepository] to persist connections to a relational database.
 
-Within the `FacebookConfig`'s body, there are two beans declared: a `ConnectController` bean and a `UserIdSource` bean.
+Within the `FacebookConfig`'s body, two beans are declared: `ConnectController` and `UserIdSource`.
 
-Obtaining user authorization from Facebook involves a "dance" of redirects between the application and Facebook. This "dance" is formally known as [OAuth][oauth]'s _Resource Owner Authorization_. Don't worry if you don't know much about OAuth. Spring Social's [`ConnectController`][ConnectController] will take care of the OAuth dance for you.
+Obtaining user authorization from Facebook involves a "dance" of redirects between the application and Facebook. This process is formally known as [OAuth][oauth]'s _Resource Owner Authorization_. Don't worry if you don't know much about OAuth. Spring Social's [`ConnectController`][ConnectController] takes care of the OAuth dance for you.
 
-Notice that `ConnectController` is created by injecting a [`ConnectionFactoryLocator`][ConnectionFactoryLocator] and a [`ConnectionRepository`][ConnectionRepository] via the constructor. You won't need to explicitly declare these beans, however. The `@EnableFacebook` annotation will make sure that a `ConnectionFactoryLocator` bean is created and the `@EnableInMemoryConnectionRepository` annotation will create an in-memory implementation of `ConnectionRepository`.
+Notice that `ConnectController` is created by injecting a [`ConnectionFactoryLocator`][ConnectionFactoryLocator] and a [`ConnectionRepository`][ConnectionRepository] via the constructor. You won't need to explicitly declare these beans, however. The `@EnableFacebook` annotation makes sure that a `ConnectionFactoryLocator` bean is created, and the `@EnableInMemoryConnectionRepository` annotation creates an in-memory implementation of `ConnectionRepository`.
 
-Connections represent a 3-way agreement between a user, an application, and an API provider such as Facebook. Although Facebook and the application itself are readily identifiable, you'll need a way to identify the current user. That's what the `UserIdSource` bean is for. 
+Connections represent a three-way agreement among a user, an application, and an API provider such as Facebook. Facebook and the application itself are readily identifiable. You identify the current user with the `UserIdSource` bean. 
 
-Here, the `userIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. Thus there is only one user of our sample application. In a real application, you'll probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user (perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext]).
+Here, the `UserIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. The sample application has only one user. In a real application, you probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user, perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext]).
 
-### Create Connection Status Views
+### Create connection status views
 
-Although much of what `ConnectController` does involves redirecting to Facebook and handling a redirect from Facebook, it also shows connection status when a GET request to /connect is made. It will defer to a view whose name is connect/{provider ID}Connect when no existing connection is available and to connect/{providerId}Connected when a connection exists for the provider. In our case, {provider ID} is "Facebook".
+Although much of what `ConnectController` does involves redirecting to Facebook and handling a redirect from Facebook, it also shows connection status when a GET request to /connect is made. It defers to a view named connect/*provider ID*Connect when no existing connection is available and to connect/*providerId*Connected when a connection exists for the provider. In this case, *provider ID* is "facebook".
 
-`ConnectController` does not define its own connection views, so you'll need to create them ourselves. First, here's a Thymeleaf view to be shown when no connection to Facebook exists:
+`ConnectController` does not define its own connection views, so you need to create them. First, here's a Thymeleaf view to be shown when no connection to Facebook exists:
 
 `src/main/resources/templates/connect/facebookConnect.html`
 ```html
@@ -264,9 +265,9 @@ public class HelloController {
 
 `HelloController` is created by injecting a `Facebook` object into its constructor. The `Facebook` object is a reference to Spring Social's Facebook API binding.
 
-The `helloFacebook()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access their Facebook data. If not, then the user is redirected to `ConnectController` where they may kick off the authorization process.
+The `helloFacebook()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing the method does is check whether the user has authorized the application to access the user's Facebook data. If not, the user is redirected to `ConnectController` with the option to kick off the authorization process.
 
-If the user has authorized the application to access their Facebook data, then it will fetch the user's profile as well as a list of profiles for the user's friends. Both are placed into the model to be displayed by the view identified as "hello".
+If the user has authorized the application to access Facebook data, the application fetches the user's profile and a list of profiles for the user's friends. Both are placed into the model to be displayed by the view identified as "hello".
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
@@ -384,40 +385,37 @@ Now run the following to produce a single executable JAR file containing all nec
 
 [maven-shade-plugin]: https://maven.apache.org/plugins/maven-shade-plugin
 
-Running the Service
+Run the service
 -------------------------------------
 
-Now you can run it from the jar as well, and distribute that as an executable artifact:
+Now you can run the application from the jar as well, and distribute that as an executable artifact:
 ```
 $ java -jar target/gs-accessing-facebook-0.1.0.jar
 
 ... app starts up ...
 ```
 
-Once the application starts up, you can point your web browser to http://localhost:8080. Since no connection has been established yet, you should see this screen prompting you to connect with Facebook:
+Once the application starts up, point your web browser to http://localhost:8080. No connection is established yet, so this screen prompts you to connect with Facebook:
 
 ![No connection to Facebook exists yet.](images/connect.png)
 
-When you click the "Connect to Facebook" button, the browser will be redircted to Facebook for authorization:
+When you click the "Connect to Facebook" button, the browser is redirected to Facebook for authorization:
 
 ![Facebook needs your permission to allow the application to access your data.](images/fbauth.png)
 
-At this point, Facebook is asking if you'd like to allow the sample application to access your public profile and list of friends. Click "Okay" to grant permission.
+Click "Okay" to grant permission for the sample application to access your public profile and list of friends.
 
-Once permission has been granted, Facebook will redirect the browser back to the application and a connection will be created and stored in the connection repository. You should see this page indicating that a connection was successful:
+Once permission is granted, Facebook redirects the browser back to the application. A connection is created and stored in the connection repository. You should see this page indicating that a connection was successful:
 
 ![A connection with Facebook has been created.](images/connected.png)
 
-If you click on the link on the connection status page, you will be taken to the home page. This time, now that a connection has been created, you'll be shown your name on Facebook as well as a list of your friends:
+Click the link on the connection status page, and you are taken to the home page. This time, now that a connection has been created, you see your name on Facebook as well as a list of your friends:
 
 ![Guess noone told you life was gonna be this way.](images/friends.png)
 
-
-Congratulations! You have just developed a simple web application that uses Spring Social to connect a user with Facebook and to retrieve some data from the user's Facebook profile.
-
 Summary
 -------
-Congrats! You've just developed a simple web application that obtains user authorization to fetch data from Facebook. 
+Congratulations! You have developed a simple web application that obtains user authorization to fetch data from Facebook, uses Spring Social to connect the user with Facebook, and retrieves some data from the user's Facebook profile. 
 
 [zip]: https://github.com/springframework-meta/gs-accessing-facebook/archive/master.zip
 [u-war]: /understanding/war
