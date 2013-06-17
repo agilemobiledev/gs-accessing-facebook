@@ -3,7 +3,7 @@
 What you'll build
 -----------------
 
-This guide walks you through creating a simple web application that accesses user data from Facebook, including the user's full name and a list of their Facebook friends.
+This guide walks you through creating a simple web application that accesses data from a Facebook user profile, as well as profile data from that user's Facebook friends.
 
 What you'll need
 ----------------
@@ -77,7 +77,7 @@ With Facebook configured in your application, you now can write a Spring MVC con
 
 The `helloFacebook()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing the method does is check whether the user has authorized the application to access the user's Facebook data. If not, the user is redirected to `ConnectController` with the option to kick off the authorization process.
 
-If the user has authorized the application to access Facebook data, the application fetches the user's profile and a list of profiles for the user's friends. Both are placed into the model to be displayed by the view identified as "hello".
+If the user has authorized the application to access Facebook data, the application fetches the user's profile as well as profile data for the user's friends that is visible to that user. The data is placed into the model to be displayed by the view identified as "hello".
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
@@ -127,13 +127,13 @@ Once permission is granted, Facebook redirects the browser back to the applicati
 
 ![A connection with Facebook has been created.](images/connected.png)
 
-Click the link on the connection status page, and you are taken to the home page. This time, now that a connection has been created, you see your name on Facebook as well as a list of your friends:
+Click the link on the connection status page, and you are taken to the home page. This time, now that a connection has been created, you see your name on Facebook and a list of your friends. Although only names are shown here, the application retrieves profile data for the user and for the user's friends. What is in the friends' profile data depends on the security settings for each individual friend, ranging from public data only up to the complete profile.
 
 ![Guess noone told you life was gonna be this way.](images/friends.png)
 
 Summary
 -------
-Congratulations! You have developed a simple web application that obtains user authorization to fetch data from Facebook, uses Spring Social to connect the user with Facebook, and retrieves some data from the user's Facebook profile. 
+Congratulations! You have developed a simple web application that obtains user authorization to fetch data from Facebook. The application connects the user to Facebook through Spring Social, retrieves data from the user's Facebook profile, and also fetches profile data from the user's Facebook friends. 
 
 [zip]: https://github.com/springframework-meta/gs-accessing-facebook/archive/master.zip
 [u-war]: /understanding/war
