@@ -10,7 +10,7 @@ What you'll need
 
 - About 15 minutes
 - An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
-- {!include#prereq-editor-jdk-buildtools}
+{!include#prereq-editor-jdk-buildtools}
 
 ## {!include#how-to-complete-this-guide}
 
@@ -54,7 +54,7 @@ Here, the `UserIdSource` bean is defined by an inner-class that always returns "
 
 ### Create connection status views
 
-Although much of what `ConnectController` does involves redirecting to Facebook and handling a redirect from Facebook, it also shows connection status when a GET request to /connect is made. It defers to a view named connect/*provider ID*Connect when no existing connection is available and to connect/*providerId*Connected when a connection exists for the provider. In this case, *provider ID* is "facebook".
+Although much of what `ConnectController` does involves redirecting to Facebook and handling a redirect from Facebook, it also shows connection status when a GET request to /connect is made. It defers to a view named connect/{provider}IDConnect when no existing connection is available and to connect/{providerId}Connected when a connection exists for the provider. In this case, *provider ID* is "facebook".
 
 `ConnectController` does not define its own connection views, so you need to create them. First, here's a Thymeleaf view to be shown when no connection to Facebook exists:
 
@@ -117,7 +117,7 @@ Once the application starts up, point your web browser to http://localhost:8080.
 
 ![No connection to Facebook exists yet.](images/connect.png)
 
-When you click the "Connect to Facebook" button, the browser is redirected to Facebook for authorization:
+When you click the **Connect to Facebook** button, the browser is redirected to Facebook for authorization:
 
 ![Facebook needs your permission to allow the application to access your data.](images/fbauth.png)
 
