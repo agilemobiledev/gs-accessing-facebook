@@ -1,3 +1,4 @@
+
 # Getting Started: Accessing Facebook Data
 
 What you'll build
@@ -33,6 +34,7 @@ To **skip the basics**, do the following:
  - Jump ahead to [Create a resource representation class](#initial).
 
 **When you're finished**, you can check your results against the code in `gs-accessing-facebook/complete`.
+[zip]: https://github.com/springframework-meta/gs-accessing-facebook/archive/master.zip
 
 
 <a name="scratch"></a>
@@ -109,6 +111,16 @@ In a project directory of your choosing, create the following subdirectory struc
 			</snapshots>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>http://repo.springsource.org/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>
 ```
