@@ -9,8 +9,8 @@ This guide walks you through creating a simple web application that accesses dat
 What you'll need
 ----------------
 
-- About 15 minutes
-- An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
+ - About 15 minutes
+ - An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
  - A favorite text editor or IDE
  - [JDK 6][jdk] or later
  - [Maven 3.0][mvn] or later
