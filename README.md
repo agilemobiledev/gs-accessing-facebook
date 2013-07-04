@@ -31,7 +31,7 @@ To **skip the basics**, do the following:
  - [Download][zip] and unzip the source repository for this guide, or clone it using [git](/understanding/git):
 `git clone https://github.com/springframework-meta/gs-accessing-facebook.git`
  - cd into `gs-accessing-facebook/initial`
- - Jump ahead to [Create a resource representation class](#initial).
+ - Jump ahead to [Enable Facebook](#initial).
 
 **When you're finished**, you can check your results against the code in `gs-accessing-facebook/complete`.
 [zip]: https://github.com/springframework-meta/gs-accessing-facebook/archive/master.zip

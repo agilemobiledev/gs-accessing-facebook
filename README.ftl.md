@@ -15,7 +15,7 @@ What you'll need
  - <@prereq_editor_jdk_buildtools/>
 
 
-## <@how_to_complete_this_guide/>
+## <@how_to_complete_this_guide jump_ahead='Enable Facebook'/>
 
 
 <a name="scratch"></a>
