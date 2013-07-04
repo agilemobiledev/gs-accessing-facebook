@@ -118,7 +118,7 @@ Run the service
 Now you can run the application from the jar as well, and distribute that as an executable artifact:
 
 ```sh
-$ java -jar target/gs-accessing-facebook-0.1.0.jar
+$ java -jar target/${project_id}-0.1.0.jar
 
 ... app starts up ...
 ```
@@ -146,7 +146,6 @@ Summary
 -------
 Congratulations! You have developed a simple web application that obtains user authorization to fetch data from Facebook. The application connects the user to Facebook through Spring Social, retrieves data from the user's Facebook profile, and also fetches profile data from the user's Facebook friends. 
 
-[zip]: https://github.com/springframework-meta/gs-accessing-facebook/archive/master.zip
 [u-war]: /understanding/war
 [u-tomcat]: /understanding/tomcat
 [u-application-context]: /understanding/application-context
