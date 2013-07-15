@@ -111,15 +111,9 @@ The [`@EnableAutoConfiguration`][] annotation switches on reasonable default beh
 
 ### <@build_an_executable_jar/>
 
+<@run_the_application module="service"/>
 
-Run the service
----------------
-
-Now you can run the application from the jar as well, and distribute that as an executable artifact:
-
-```sh
-$ java -jar target/${project_id}-0.1.0.jar
-
+```
 ... app starts up ...
 ```
 
