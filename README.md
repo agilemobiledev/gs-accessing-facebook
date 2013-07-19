@@ -76,11 +76,6 @@ In a project directory of your choosing, create the following subdirectory struc
             <groupId>org.springframework.zero</groupId>
             <artifactId>spring-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.zero</groupId>
-            <artifactId>spring-autoconfigure</artifactId>
-            <version>0.5.0.BUILD-SNAPSHOT</version>
-        </dependency>
 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-facebook</artifactId>
