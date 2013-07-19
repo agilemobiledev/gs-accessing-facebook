@@ -7,17 +7,22 @@
 	<artifactId>gs-accessing-facebook</artifactId>
 	<version>0.1.0</version>
 
-	<parent>
-		<groupId>org.springframework.bootstrap</groupId>
-		<artifactId>spring-bootstrap-starters</artifactId>
-		<version>0.5.0.BUILD-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.zero</groupId>
+        <artifactId>spring-starter-parent</artifactId>
+        <version>0.5.0.BUILD-SNAPSHOT</version>
+    </parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.bootstrap</groupId>
-			<artifactId>spring-bootstrap-web-starter</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.zero</groupId>
+            <artifactId>spring-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.zero</groupId>
+            <artifactId>spring-autoconfigure</artifactId>
+            <version>0.5.0.BUILD-SNAPSHOT</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-facebook</artifactId>
@@ -31,7 +36,6 @@
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring3</artifactId>
-			<version>2.0.16</version>
 		</dependency>		
 	</dependencies>
 
@@ -45,8 +49,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
+				<groupId>org.springframework.zero</groupId>
+				<artifactId>spring-package-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
