@@ -1,6 +1,4 @@
 
-# Getting Started: Accessing Facebook Data
-
 What you'll build
 -----------------
 

@@ -1,7 +1,5 @@
 <#assign project_id="gs-accessing-facebook">
 
-# Getting Started: Accessing Facebook Data
-
 What you'll build
 -----------------
 
