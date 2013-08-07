@@ -22,8 +22,10 @@ There's more to building social applications than fetching a user's profile data
 
 ### Understanding
 
+* [OAUTH][u-oauth]
 * [REST][u-rest]
 * [JSON][u-json]
 
+[u-oauth]: /understanding/oauth
 [u-rest]: /understanding/rest
 [u-json]: /understanding/json
