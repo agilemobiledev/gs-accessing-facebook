@@ -1,9 +1,10 @@
 <#assign project_id="gs-accessing-facebook">
+This guide walks you through creating a simple web application that accesses data from a Facebook user profile, as well as profile data from that user's Facebook friends.
 
 What you'll build
 -----------------
 
-This guide walks you through creating a simple web application that accesses data from a Facebook user profile, as well as profile data from that user's Facebook friends.
+You'll learn how to build a simple web application that accesses Facebook data.
 
 What you'll need
 ----------------
