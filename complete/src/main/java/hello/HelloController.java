@@ -13,25 +13,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class HelloController {
-	
-	private Facebook facebook;
 
-	@Inject
-	public HelloController(Facebook facebook) {
-		this.facebook = facebook;		
-	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String helloFacebook(Model model) {
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
-			
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
-		model.addAttribute("friends", friends);
-		
-		return "hello";
-	}
-	
+    private Facebook facebook;
+
+    @Inject
+    public HelloController(Facebook facebook) {
+        this.facebook = facebook;
+    }
+
+    @RequestMapping(method=RequestMethod.GET)
+    public String helloFacebook(Model model) {
+        if (!facebook.isAuthorized()) {
+            return "redirect:/connect/facebook";
+        }
+
+        model.addAttribute(facebook.userOperations().getUserProfile());
+        PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
+        model.addAttribute("friends", friends);
+
+        return "hello";
+    }
+
 }

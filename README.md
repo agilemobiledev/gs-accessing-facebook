@@ -57,12 +57,12 @@ In a project directory of your choosing, create the following subdirectory struc
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.springframework</groupId>
-	<artifactId>gs-accessing-facebook</artifactId>
-	<version>0.1.0</version>
+    <groupId>org.springframework</groupId>
+    <artifactId>gs-accessing-facebook</artifactId>
+    <version>0.1.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -70,55 +70,47 @@ In a project directory of your choosing, create the following subdirectory struc
         <version>0.5.0.BUILD-SNAPSHOT</version>
     </parent>
 
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-facebook</artifactId>
-			<version>1.1.0.BUILD-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-crypto</artifactId>
-			<version>3.1.4.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.thymeleaf</groupId>
-			<artifactId>thymeleaf-spring3</artifactId>
-		</dependency>		
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+            <version>1.1.0.BUILD-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>3.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring3</artifactId>
+        </dependency>
+    </dependencies>
 
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>http://repo.springsource.org/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>http://repo.springsource.org/libs-milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>http://repo.springsource.org/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.springsource.org/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.springsource.org/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
 ```
@@ -150,20 +142,20 @@ import org.springframework.social.facebook.config.annotation.EnableFacebook;
 @EnableInMemoryConnectionRepository
 public class FacebookConfig {
 
-	@Bean
-	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
-		return new ConnectController(connectionFactoryLocator, connectionRepository);
-	}
-	
-	@Bean
-	public UserIdSource userIdSource() {
-		return new UserIdSource() {			
-			@Override
-			public String getUserId() {
-				return "testuser";
-			}
-		};
-	}
+    @Bean
+    public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
+        return new ConnectController(connectionFactoryLocator, connectionRepository);
+    }
+
+    @Bean
+    public UserIdSource userIdSource() {
+        return new UserIdSource() {
+            @Override
+            public String getUserId() {
+                return "testuser";
+            }
+        };
+    }
 
 } 
 ```
@@ -255,27 +247,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class HelloController {
-	
-	private Facebook facebook;
 
-	@Inject
-	public HelloController(Facebook facebook) {
-		this.facebook = facebook;		
-	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String helloFacebook(Model model) {
-		if (!facebook.isAuthorized()) {
-			return "redirect:/connect/facebook";
-		}
-			
-		model.addAttribute(facebook.userOperations().getUserProfile());
-		PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
-		model.addAttribute("friends", friends);
-		
-		return "hello";
-	}
-	
+    private Facebook facebook;
+
+    @Inject
+    public HelloController(Facebook facebook) {
+        this.facebook = facebook;
+    }
+
+    @RequestMapping(method=RequestMethod.GET)
+    public String helloFacebook(Model model) {
+        if (!facebook.isAuthorized()) {
+            return "redirect:/connect/facebook";
+        }
+
+        model.addAttribute(facebook.userOperations().getUserProfile());
+        PagedList<FacebookProfile> friends = facebook.friendOperations().getFriendProfiles();
+        model.addAttribute("friends", friends);
+
+        return "hello";
+    }
+
 }
 ```
 
@@ -336,27 +328,27 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan
 public class Application {
 
-	@Bean
-	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
-		return new ConnectController(connectionFactoryLocator, connectionRepository);
-	}
-	
-	@Bean
-	public UserIdSource userIdSource() {
-		return new UserIdSource() {			
-			@Override
-			public String getUserId() {
-				return "testuser";
-			}
-		};
-	}
+    @Bean
+    public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
+        return new ConnectController(connectionFactoryLocator, connectionRepository);
+    }
 
-	/*
-	 * SPRING BOOTSTRAP MAIN
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    @Bean
+    public UserIdSource userIdSource() {
+        return new UserIdSource() {
+            @Override
+            public String getUserId() {
+                return "testuser";
+            }
+        };
+    }
+
+    /*
+     * SPRING BOOTSTRAP MAIN
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 } 
 ```

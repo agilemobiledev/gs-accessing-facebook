@@ -12,19 +12,19 @@ import org.springframework.social.facebook.config.annotation.EnableFacebook;
 @EnableInMemoryConnectionRepository
 public class FacebookConfig {
 
-	@Bean
-	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
-		return new ConnectController(connectionFactoryLocator, connectionRepository);
-	}
-	
-	@Bean
-	public UserIdSource userIdSource() {
-		return new UserIdSource() {			
-			@Override
-			public String getUserId() {
-				return "testuser";
-			}
-		};
-	}
+    @Bean
+    public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
+        return new ConnectController(connectionFactoryLocator, connectionRepository);
+    }
+
+    @Bean
+    public UserIdSource userIdSource() {
+        return new UserIdSource() {
+            @Override
+            public String getUserId() {
+                return "testuser";
+            }
+        };
+    }
 
 } 
