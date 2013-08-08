@@ -9,10 +9,10 @@ There's more to building social applications than fetching a user's profile data
 * [Registering an Application with Twitter][gs-register-twitter-app]
 * [Consuming RESTful Web Services][gs-consuming-rest]
 
-[gs-accessing-twitter]: /guides/gs/accessing-twitter/content
-[gs-register-facebook-app]: /guides/gs/register-facebook-app/content
-[gs-register-twitter-app]: /guides/gs/register-twitter-app/content
-[gs-consuming-rest]: /guides/gs/consuming-rest/content
+[gs-accessing-twitter]: /guides/gs/accessing-twitter/
+[gs-register-facebook-app]: /guides/gs/register-facebook-app/
+[gs-register-twitter-app]: /guides/gs/register-twitter-app/
+[gs-consuming-rest]: /guides/gs/consuming-rest/
 
 ### Tutorials
 
