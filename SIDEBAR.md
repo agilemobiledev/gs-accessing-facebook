@@ -16,9 +16,9 @@ There's more to building social applications than fetching a user's profile data
 
 ### Tutorials
 
-* [Tutorial TBD][tut-tbd]
+* [Designing and Implementing RESTful Web Services with Spring][tut-rest]
 
-[tut-tbd]: /guides/tutorials/tbd
+[tut-rest]: /guides/tutorials/rest
 
 ### Understanding
 
