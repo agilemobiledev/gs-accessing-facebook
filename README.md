@@ -9,7 +9,7 @@ What you'll need
 ----------------
 
  - About 15 minutes
- - An application ID and secret obtained from [registering an application with Facebook][register-facebook-app].
+ - An application ID and secret obtained from [registering an application with Facebook][gs-register-facebook-app].
  - A favorite text editor or IDE
  - [JDK 6][jdk] or later
  - [Maven 3.0][mvn] or later
@@ -169,10 +169,10 @@ public class FacebookConfig {
 } 
 ```
 
-Because the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]. Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, [obtain a real application ID and secret][register-facebook-app] and replace these fake values with the real values given to you by Facebook.
+Because the application will be accessing Facebook data, `FacebookConfig` is annotated with [`@EnableFacebook`][@EnableFacebook]. Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, [obtain a real application ID and secret][gs-register-facebook-app] and replace these fake values with the real values given to you by Facebook.
 
 After a user authorizes your application to access their Facebook data, Spring Social creates a connection. That connection will need to be saved in a connection repository for long-term use.
-For the purposes of testing and for small sample applications, such as the one in this guide, an in-memory connection repository is sufficient. Notice that `FacebookConfig` is annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. 
+For the purposes of testing and for small sample applications, such as the one in this guide, an in-memory connection repository is sufficient. Notice that `FacebookConfig` is annotated with `@EnableInMemoryConnectionRepository`. 
 
 For real applications, you need to select a more persistent
 option. You can use [`@EnableJdbcConnectionRepository`][@EnableJdbcConnectionRepository] to persist connections to a relational database.
@@ -447,9 +447,8 @@ Congratulations! You have developed a simple web application that obtains user a
 [`@Component`]: http://static.springsource.org/spring/docs/current/javadoc-api/org/springframework/stereotype/Component.html
 [`@EnableAutoConfiguration`]: http://static.springsource.org/spring-bootstrap/docs/0.5.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/bootstrap/context/annotation/SpringApplication.html
 [`DispatcherServlet`]: http://static.springsource.org/spring/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
-[register-facebook-app]: /gs-register-facebook-app/README.md
+[gs-register-facebook-app]: /guides/gs/register-facebook-app
 [@EnableFacebook]: http://static.springsource.org/spring-social-facebook/docs/1.1.x/api/org/springframework/social/facebook/config/annotation/EnableFacebook.html
-[@EnableInMemoryConnectionRepository]: TODO
 [@EnableJdbcConnectionRepository]: http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/config/annotation/EnableJdbcConnectionRepository.html
 [oauth]: /understanding/OAuth
 [ConnectController]: http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/connect/web/ConnectController.html
