@@ -2,7 +2,7 @@
 
 There's more to building social applications than fetching a user's profile data from Facebook. You may want to continue your exploration of Spring and social API integration with the following
 
-### Getting Started Guides
+### Getting Started guides
 
 * [Accessing Twitter Data][gs-accessing-twitter]
 * [Registering an Application with Facebook][gs-register-facebook-app]
@@ -20,7 +20,7 @@ There's more to building social applications than fetching a user's profile data
 
 [tut-rest]: /guides/tutorials/rest
 
-### Understanding
+### Concepts and technologies
 
 * [OAUTH][u-oauth]
 * [REST][u-rest]
