@@ -1,10 +1,10 @@
 <#assign project_id="gs-accessing-facebook">
-This guide walks you through creating a simple web application that accesses data from a Facebook user profile, as well as profile data from that user's Facebook friends.
+This guide walks you through the process of creating a simple web application that accesses Facebook data. 
 
 What you'll build
 -----------------
 
-You'll learn how to build a simple web application that accesses Facebook data.
+You'll build a web application that accesses data from a Facebook user profile, as well as profile data from that user's Facebook friends.
 
 What you'll need
 ----------------
@@ -58,7 +58,8 @@ Connections represent a three-way agreement among a user, an application, and an
 
 Here, the `UserIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. The sample application has only one user. In a real application, you probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user, perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext]).
 
-### Create connection status views
+Create connection status views
+------------------------------
 
 Although much of what `ConnectController` does involves redirecting to Facebook and handling a redirect from Facebook, it also shows connection status when a GET request to /connect is made. It defers to a view named connect/{provider}IDConnect when no existing connection is available and to connect/{providerId}Connected when a connection exists for the provider. In this case, *provider ID* is "facebook".
 
@@ -96,7 +97,7 @@ Make the application executable
 
 Although it is possible to package this service as a traditional _web application archive_ or [WAR][u-war] file for deployment to an external application server, the simpler approach demonstrated below creates a _standalone application_. You package everything in a single, executable JAR file, driven by a good old Java `main()` method. And along the way, you use Spring's support for embedding the [Tomcat][u-tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
 
-### Create a main class
+### Create an Application class
 
     <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
@@ -108,7 +109,8 @@ The `@Import` annotation tells Spring to import additional Java configuration. H
 
 The [`@EnableAutoConfiguration`][] annotation switches on reasonable default behaviors based on the content of your classpath. For example, because the application depends on the embeddable version of Tomcat (tomcat-embed-core.jar), a Tomcat server is set up and configured with reasonable defaults on your behalf. And because the application also depends on Spring MVC (spring-webmvc.jar), a Spring MVC [`DispatcherServlet`][] is configured and registered for you — no `web.xml` necessary! Auto-configuration is a powerful, flexible mechanism. See the [API documentation][`@EnableAutoConfiguration`] for further details.
 
-### <@build_an_executable_jar_with_gradle/>
+<@build_an_executable_jar_subhead/>
+<@build_an_executable_jar_with_gradle/>
 
 <@run_the_application_with_gradle module="service"/>
 
@@ -130,7 +132,7 @@ Once permission is granted, Facebook redirects the browser back to the applicati
 
 ![A connection with Facebook has been created.](images/connected.png)
 
-Click the link on the connection status page, and you are taken to the home page. This time, now that a connection has been created, you see your name on Facebook and a list of your friends. Although only names are shown here, the application retrieves profile data for the user and for the user's friends. What is in the friends' profile data depends on the security settings for each individual friend, ranging from public data only up to the complete profile.
+Click the link on the connection status page, and you are taken to the home page. This time, now that a connection has been created, you see your name on Facebook and a list of your friends. Although only names are shown here, the application retrieves profile data for the user and for the user's friends. What is in the friends' profile data depends on the security settings for each individual friend, ranging from public data only to the complete profile.
 
 ![Guess noone told you life was gonna be this way.](images/friends.png)
 
