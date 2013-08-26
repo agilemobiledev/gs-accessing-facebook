@@ -302,7 +302,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableWebMvc
 @Import(FacebookConfig.class)
 @ComponentScan
 public class Application {
